@@ -1,0 +1,2 @@
+class Ubs < ApplicationRecord
+end

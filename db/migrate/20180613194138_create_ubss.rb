@@ -1,6 +1,6 @@
-class CreateUbs < ActiveRecord::Migration[5.2]
+class CreateUbss < ActiveRecord::Migration[5.2]
   def change
-    create_table :ubs do |t|
+    create_table :ubss do |t|
       t.string :name
       t.string :address
       t.string :city
