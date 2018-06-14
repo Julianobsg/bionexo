@@ -1,6 +1,6 @@
 class Api::V1::UbssController < ApplicationController
   def index
-    render json: { total_entries: Ubs.all.count, entries: entries }, adapter: :json
+    render json: { current_page: (params[:page] || 1).to_i, per_page: per_page.to_i, total_entries: Ubs.all.count, entries: entries }, adapter: :json
   end
 
   private

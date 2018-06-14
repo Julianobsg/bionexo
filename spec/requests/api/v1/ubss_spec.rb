@@ -36,19 +36,21 @@ describe '/api/v1/ubss', type: :request do
   it 'checks meta tags' do
     create_list(:ubs, 4)
     get '/api/v1/ubss'
-    expect(json).to include_json(total_entries: 4)
+    expect(json).to include_json(current_page: 1, per_page: 10, total_entries: 4)
   end
 
   it 'gets second page in ubs list' do
     create_list(:ubs, 15)
     get '/api/v1/ubss?page=2'
     expect(json['entries'].length).to eq(5)
+    expect(json).to include_json(current_page: 2)
   end
 
   it 'gets the number of ubss according to per page value' do
     create_list(:ubs, 15)
     get '/api/v1/ubss?per_page=15'
     expect(json['entries'].length).to eq(15)
+    expect(json).to include_json(per_page: 15)
   end
 
   it 'find ubs by query param latitude and longitude' do
