@@ -6,6 +6,10 @@ class Api::V1::UbssController < ApplicationController
   private
 
   def entries
-    ActiveModelSerializers::SerializableResource.new(Ubs.page(params[:page]))
+    ActiveModelSerializers::SerializableResource.new(Ubs.page(params[:page]).per(per_page))
+  end
+
+  def per_page
+    params[:per_page] || 10
   end
 end

@@ -3,12 +3,12 @@ require 'rails_helper'
 describe '/api/v1/ubss', type: :request do
   let(:json) { JSON.parse(response.body) }
   it 'get a list of ubss' do
-    create_list(:ubs, 30)
+    create_list(:ubs, 20)
 
     get '/api/v1/ubss'
     expect(response).to be_successful
 
-    expect(json['entries'].length).to eq(25)
+    expect(json['entries'].length).to eq(10)
   end
 
   it 'serializes ubs json' do
@@ -40,8 +40,14 @@ describe '/api/v1/ubss', type: :request do
   end
 
   it 'gets second page in ubs list' do
-    create_list(:ubs, 30)
+    create_list(:ubs, 15)
     get '/api/v1/ubss?page=2'
     expect(json['entries'].length).to eq(5)
+  end
+
+  it 'gets the number of ubss according to per page value' do
+    create_list(:ubs, 15)
+    get '/api/v1/ubss?per_page=15'
+    expect(json['entries'].length).to eq(15)
   end
 end
