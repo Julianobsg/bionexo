@@ -3,12 +3,12 @@ require 'rails_helper'
 describe '/api/v1/ubss', type: :request do
   let(:json) { JSON.parse(response.body) }
   it 'get a list of ubss' do
-    create_list(:ubs, 10)
+    create_list(:ubs, 30)
 
     get '/api/v1/ubss'
     expect(response).to be_successful
 
-    expect(json['entries'].length).to eq(10)
+    expect(json['entries'].length).to eq(25)
   end
 
   it 'serializes ubs json' do
@@ -37,5 +37,11 @@ describe '/api/v1/ubss', type: :request do
     create_list(:ubs, 4)
     get '/api/v1/ubss'
     expect(json).to include_json(total_entries: 4)
+  end
+
+  it 'gets second page in ubs list' do
+    create_list(:ubs, 30)
+    get '/api/v1/ubss?page=2'
+    expect(json['entries'].length).to eq(5)
   end
 end
