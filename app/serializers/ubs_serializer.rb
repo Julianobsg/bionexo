@@ -1,6 +1,4 @@
 class UbsSerializer < ActiveModel::Serializer
-  type 'entries'
-
   attributes :id, :name, :address, :city, :phone, :geocode, :scores
 
   def geocode

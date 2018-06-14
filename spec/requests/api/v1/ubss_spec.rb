@@ -32,4 +32,10 @@ describe '/api/v1/ubss', type: :request do
       }
     )
   end
+
+  it 'checks meta tags' do
+    create_list(:ubs, 4)
+    get '/api/v1/ubss'
+    expect(json).to include_json(total_entries: 4)
+  end
 end
