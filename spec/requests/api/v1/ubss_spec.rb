@@ -50,4 +50,18 @@ describe '/api/v1/ubss', type: :request do
     get '/api/v1/ubss?per_page=15'
     expect(json['entries'].length).to eq(15)
   end
+
+  it 'find ubs by query param latitude and longitude' do
+    create_list(:ubs, 10)
+    ubs = create(:ubs, latitude: -23.6099946498864, longitude: 10.13123123123);
+    get '/api/v1/ubss?query=-23.6099946498864,10.13123123123'
+
+    expect(json['entries'].length).to eq(1)
+    expect(json['entries'][0]).to include_json(
+      geocode: {
+        lat: -23.6099946498864,
+        long: 10.13123123123
+      }
+    )
+  end
 end
