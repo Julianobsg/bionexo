@@ -8,7 +8,7 @@ class CreateUbss < ActiveRecord::Migration[5.2]
       t.decimal :latitude, precision: 18, scale: 13
       t.decimal :longitude, precision: 18, scale: 13
       t.integer :size
-      t.integer :adaptation_for_senior
+      t.integer :adaptation_for_seniors
       t.integer :medical_equipment
       t.integer :medicine
 

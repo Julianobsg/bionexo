@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2018_06_13_194138) do
     t.decimal "latitude", precision: 18, scale: 13
     t.decimal "longitude", precision: 18, scale: 13
     t.integer "size"
-    t.integer "adaptation_for_senior"
+    t.integer "adaptation_for_seniors"
     t.integer "medical_equipment"
     t.integer "medicine"
     t.datetime "created_at", null: false
