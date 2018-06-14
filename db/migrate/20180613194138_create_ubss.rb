@@ -5,8 +5,8 @@ class CreateUbss < ActiveRecord::Migration[5.2]
       t.string :address
       t.string :city
       t.string :phone
-      t.decimal :latitude, precision: 10, scale: 6
-      t.decimal :longitude, precision: 10, scale: 6
+      t.decimal :latitude, precision: 18, scale: 13
+      t.decimal :longitude, precision: 18, scale: 13
       t.integer :size
       t.integer :adaptation_for_senior
       t.integer :medical_equipment
